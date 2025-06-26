@@ -1,0 +1,184 @@
+{
+  "guidelines_analysis": {
+    "summary": {
+      "total_violations": 13,
+      "errors": 1,
+      "warnings": 10,
+      "info": 2
+    },
+    "violations": [
+      {
+        "rule_name": "class_naming",
+        "description": "Class names should use PascalCase (e.g., MyClass, UrlTable)",
+        "file_path": "sample_code.cpp",
+        "line_number": 7,
+        "line_content": "int BadVariableName;  // Should be snake_case or camelCase",
+        "severity": "warning",
+        "suggestion": "Class name 'myClass' should use PascalCase"
+      },
+      {
+        "rule_name": "function_naming",
+        "description": "Function names should use PascalCase (e.g., MyExcitingFunction, AddTableEntry)",
+        "file_path": "sample_code.cpp",
+        "line_number": 15,
+        "line_content": "void Another_Function_With_Very_Long_Name_That_Exceeds_One_Hundred_And_Twenty_Characters_Which_Is_Too_Long() {",
+        "severity": "warning",
+        "suggestion": "Function name 'Another_Function_With_Very_Long_Name_That_Exceeds_One_Hundred_And_Twenty_Characters_Which_Is_Too_Long' should use PascalCase"
+      },
+      {
+        "rule_name": "function_naming",
+        "description": "Function names should use PascalCase (e.g., MyExcitingFunction, AddTableEntry)",
+        "file_path": "sample_code.cpp",
+        "line_number": 26,
+        "line_content": "void global_function() {   // OK - snake_case",
+        "severity": "warning",
+        "suggestion": "Function name 'global_function' should use PascalCase"
+      },
+      {
+        "rule_name": "member_variable_naming",
+        "description": "Class member variables should be prefixed with 'm_' and use camelCase (e.g., m_tableName, m_someVar)",
+        "file_path": "sample_code.cpp",
+        "line_number": 6,
+        "line_content": "int SomeVariable;    // OK",
+        "severity": "warning",
+        "suggestion": "Member variable 'SomeVariable' should be prefixed with 'm_'"
+      },
+      {
+        "rule_name": "member_variable_naming",
+        "description": "Class member variables should be prefixed with 'm_' and use camelCase (e.g., m_tableName, m_someVar)",
+        "file_path": "sample_code.cpp",
+        "line_number": 7,
+        "line_content": "int BadVariableName;  // Should be snake_case or camelCase",
+        "severity": "warning",
+        "suggestion": "Member variable 'BadVariableName' should be prefixed with 'm_'"
+      },
+      {
+        "rule_name": "smart_pointers",
+        "description": "Prefer smart pointers over raw pointers (std::shared_ptr, std::unique_ptr, std::weak_ptr)",
+        "file_path": "sample_code.cpp",
+        "line_number": 10,
+        "line_content": "int* m_ptr = new int(42);  // Raw pointer usage",
+        "severity": "info",
+        "suggestion": "Consider using std::unique_ptr, std::shared_ptr, or RAII patterns"
+      },
+      {
+        "rule_name": "smart_pointers",
+        "description": "Prefer smart pointers over raw pointers (std::shared_ptr, std::unique_ptr, std::weak_ptr)",
+        "file_path": "sample_code.cpp",
+        "line_number": 12,
+        "line_content": "delete m_ptr;              // Raw memory management",
+        "severity": "info",
+        "suggestion": "Consider using std::unique_ptr, std::shared_ptr, or RAII patterns"
+      },
+      {
+        "rule_name": "class_naming",
+        "description": "Class names should use PascalCase (e.g., MyClass, UrlTable)",
+        "file_path": "sample_header.h",
+        "line_number": 5,
+        "line_content": "int* getRawPointer();  // Should avoid raw pointers",
+        "severity": "warning",
+        "suggestion": "Class name 'myBadClass' should use PascalCase"
+      },
+      {
+        "rule_name": "member_variable_naming",
+        "description": "Class member variables should be prefixed with 'm_' and use camelCase (e.g., m_tableName, m_someVar)",
+        "file_path": "sample_header.h",
+        "line_number": 9,
+        "line_content": "int MEMBER_VAR;        // Should use camelCase or m_ prefix",
+        "severity": "warning",
+        "suggestion": "Member variable 'MEMBER_VAR' should be prefixed with 'm_'"
+      },
+      {
+        "rule_name": "namespace_usage",
+        "description": "Avoid 'using namespace std' in header files",
+        "file_path": "sample_header.h",
+        "line_number": 1,
+        "line_content": "using namespace std;  // Bad practice in header",
+        "severity": "warning",
+        "suggestion": "Use specific std:: prefixes instead"
+      },
+      {
+        "rule_name": "include_guards",
+        "description": "Header files should use include guards (#ifndef PROJECT_PATH_FILE_H_)",
+        "file_path": "sample_header.h",
+        "line_number": 1,
+        "line_content": "using namespace std;  // Bad practice in header",
+        "severity": "error",
+        "suggestion": "Add #pragma once at the top or use #ifndef guards"
+      },
+      {
+        "rule_name": "function_comments",
+        "description": "All functions must have Doxygen-style comments in header files",
+        "file_path": "sample_header.h",
+        "line_number": 6,
+        "line_content": "void SomeMethod();     // Should use camelCase or snake_case",
+        "severity": "warning",
+        "suggestion": "Add Doxygen-style comment above function declaration"
+      },
+      {
+        "rule_name": "function_comments",
+        "description": "All functions must have Doxygen-style comments in header files",
+        "file_path": "sample_header.h",
+        "line_number": 12,
+        "line_content": "void AnotherFunctionWithVeryLongNameThatExceedsTheLineLimit(int param1, int param2, int param3, int param4);",
+        "severity": "warning",
+        "suggestion": "Add Doxygen-style comment above function declaration"
+      }
+    ]
+  },
+  "ai_analysis": {
+    "enabled": true,
+    "analyses": [
+      {
+        "file_path": "sample_code.cpp",
+        "overall_score": 4,
+        "maintainability_score": 3,
+        "code_quality_insights": "The code has some issues with naming conventions, memory management, and raw resource handling. It also lacks modern C++ features and best practices. The code is not thread-safe and has potential runtime errors.",
+        "improvement_suggestions": [
+          "Use PascalCase for class names and camelCase or snake_case for variable and function names",
+          "Avoid raw pointer usage and instead use smart pointers or containers",
+          "Use nullptr instead of 0 for null pointers",
+          "Use unique_ptr or shared_ptr for dynamic memory allocation",
+          "Use const correctness for function parameters and variables",
+          "Avoid long function names and instead use descriptive names",
+          "Use modern C++ features such as auto, constexpr, and range-based for loops",
+          "Consider using a more secure way of allocating memory, such as new[] or std::vector",
+          "Use a consistent naming convention throughout the code"
+        ],
+        "potential_bugs": [
+          "Raw pointer usage and lack of null checks can lead to runtime errors",
+          "Raw memory management can lead to memory leaks and crashes",
+          "Long function names can lead to compilation errors and make the code harder to read"
+        ],
+        "security_concerns": [
+          "Raw memory management can lead to buffer overflows and security vulnerabilities",
+          "Lack of input validation and sanitization can lead to injection attacks"
+        ],
+        "performance_insights": "The code has potential performance bottlenecks due to raw memory management and lack of modern C++ features. Consider using containers and smart pointers to improve performance."
+      },
+      {
+        "file_path": "sample_header.h",
+        "overall_score": 4,
+        "maintainability_score": 5,
+        "code_quality_insights": "The code has some issues with naming conventions, memory management, and potential runtime errors. It also lacks modern C++ best practices and has some security concerns.",
+        "improvement_suggestions": [
+          "Use PascalCase for class names and camelCase or snake_case for method names",
+          "Avoid raw pointers and use smart pointers instead",
+          "Use UPPER_SNAKE_CASE for constants",
+          "Use meaningful variable names and avoid single-letter variable names",
+          "Consider using const correctness for method parameters and return types",
+          "Use modern C++ features such as auto, nullptr, and range-based for loops"
+        ],
+        "potential_bugs": [
+          "The raw pointer returned by getRawPointer() can lead to memory leaks or dangling pointers",
+          "The private member variable MEMBER_VAR can be accessed directly, potentially leading to unexpected behavior"
+        ],
+        "security_concerns": [
+          "The use of raw pointers can lead to buffer overflows or other security vulnerabilities",
+          "The global constant globalConstant can be modified by any part of the program, potentially leading to unexpected behavior"
+        ],
+        "performance_insights": "The code does not have any obvious performance bottlenecks, but using smart pointers and avoiding raw pointers can improve memory management and reduce the risk of memory leaks."
+      }
+    ]
+  }
+}
