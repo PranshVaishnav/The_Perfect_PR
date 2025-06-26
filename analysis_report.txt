@@ -1,0 +1,127 @@
+📋 C++ Code Analysis Report
+==================================================
+
+## 📏 Guidelines Compliance
+  🔴 Errors: 1
+  🟡 Warnings: 10
+  🔵 Info: 2
+
+### 📁 sample_code.cpp
+---------------------
+🟡 Line 7: Class names should use PascalCase (e.g., MyClass, UrlTable)
+   Code: int BadVariableName;  // Should be snake_case or camelCase
+   💡 Class name 'myClass' should use PascalCase
+
+🟡 Line 15: Function names should use PascalCase (e.g., MyExcitingFunction, AddTableEntry)
+   Code: void Another_Function_With_Very_Long_Name_That_Exceeds_One_Hundred_And_Twenty_Ch...
+   💡 Function name 'Another_Function_With_Very_Long_Name_That_Exceeds_One_Hundred_And_Twenty_Characters_Which_Is_Too_Long' should use PascalCase
+
+🟡 Line 26: Function names should use PascalCase (e.g., MyExcitingFunction, AddTableEntry)
+   Code: void global_function() {   // OK - snake_case
+   💡 Function name 'global_function' should use PascalCase
+
+🟡 Line 6: Class member variables should be prefixed with 'm_' and use camelCase (e.g., m_tableName, m_someVar)
+   Code: int SomeVariable;    // OK
+   💡 Member variable 'SomeVariable' should be prefixed with 'm_'
+
+🟡 Line 7: Class member variables should be prefixed with 'm_' and use camelCase (e.g., m_tableName, m_someVar)
+   Code: int BadVariableName;  // Should be snake_case or camelCase
+   💡 Member variable 'BadVariableName' should be prefixed with 'm_'
+
+🔵 Line 10: Prefer smart pointers over raw pointers (std::shared_ptr, std::unique_ptr, std::weak_ptr)
+   Code: int* m_ptr = new int(42);  // Raw pointer usage
+   💡 Consider using std::unique_ptr, std::shared_ptr, or RAII patterns
+
+🔵 Line 12: Prefer smart pointers over raw pointers (std::shared_ptr, std::unique_ptr, std::weak_ptr)
+   Code: delete m_ptr;              // Raw memory management
+   💡 Consider using std::unique_ptr, std::shared_ptr, or RAII patterns
+
+### 📁 sample_header.h
+---------------------
+🟡 Line 5: Class names should use PascalCase (e.g., MyClass, UrlTable)
+   Code: int* getRawPointer();  // Should avoid raw pointers
+   💡 Class name 'myBadClass' should use PascalCase
+
+🟡 Line 9: Class member variables should be prefixed with 'm_' and use camelCase (e.g., m_tableName, m_someVar)
+   Code: int MEMBER_VAR;        // Should use camelCase or m_ prefix
+   💡 Member variable 'MEMBER_VAR' should be prefixed with 'm_'
+
+🟡 Line 1: Avoid 'using namespace std' in header files
+   Code: using namespace std;  // Bad practice in header
+   💡 Use specific std:: prefixes instead
+
+🔴 Line 1: Header files should use include guards (#ifndef PROJECT_PATH_FILE_H_)
+   Code: using namespace std;  // Bad practice in header
+   💡 Add #pragma once at the top or use #ifndef guards
+
+🟡 Line 6: All functions must have Doxygen-style comments in header files
+   Code: void SomeMethod();     // Should use camelCase or snake_case
+   💡 Add Doxygen-style comment above function declaration
+
+🟡 Line 12: All functions must have Doxygen-style comments in header files
+   Code: void AnotherFunctionWithVeryLongNameThatExceedsTheLineLimit(int param1, int para...
+   💡 Add Doxygen-style comment above function declaration
+
+## 🤖 AI Code Analysis
+==============================
+
+### 📁 sample_code.cpp
+---------------------
+**Overall Score:** 4/10
+**Maintainability:** 3/10
+
+**Code Quality Insights:**
+The code has some issues with naming conventions, memory management, and raw resource handling. It also lacks modern C++ features and best practices. The code is not thread-safe and has potential runtime errors.
+
+**Performance Analysis:**
+The code has potential performance bottlenecks due to raw memory management and lack of modern C++ features. Consider using containers and smart pointers to improve performance.
+
+**💡 Improvement Suggestions:**
+  1. Use PascalCase for class names and camelCase or snake_case for variable and function names
+  2. Avoid raw pointer usage and instead use smart pointers or containers
+  3. Use nullptr instead of 0 for null pointers
+  4. Use unique_ptr or shared_ptr for dynamic memory allocation
+  5. Use const correctness for function parameters and variables
+  6. Avoid long function names and instead use descriptive names
+  7. Use modern C++ features such as auto, constexpr, and range-based for loops
+  8. Consider using a more secure way of allocating memory, such as new[] or std::vector
+  9. Use a consistent naming convention throughout the code
+
+**🐛 Potential Issues:**
+  1. Raw pointer usage and lack of null checks can lead to runtime errors
+  2. Raw memory management can lead to memory leaks and crashes
+  3. Long function names can lead to compilation errors and make the code harder to read
+
+**🔒 Security Concerns:**
+  1. Raw memory management can lead to buffer overflows and security vulnerabilities
+  2. Lack of input validation and sanitization can lead to injection attacks
+
+
+### 📁 sample_header.h
+---------------------
+**Overall Score:** 4/10
+**Maintainability:** 5/10
+
+**Code Quality Insights:**
+The code has some issues with naming conventions, memory management, and potential runtime errors. It also lacks modern C++ best practices and has some security concerns.
+
+**Performance Analysis:**
+The code does not have any obvious performance bottlenecks, but using smart pointers and avoiding raw pointers can improve memory management and reduce the risk of memory leaks.
+
+**💡 Improvement Suggestions:**
+  1. Use PascalCase for class names and camelCase or snake_case for method names
+  2. Avoid raw pointers and use smart pointers instead
+  3. Use UPPER_SNAKE_CASE for constants
+  4. Use meaningful variable names and avoid single-letter variable names
+  5. Consider using const correctness for method parameters and return types
+  6. Use modern C++ features such as auto, nullptr, and range-based for loops
+
+**🐛 Potential Issues:**
+  1. The raw pointer returned by getRawPointer() can lead to memory leaks or dangling pointers
+  2. The private member variable MEMBER_VAR can be accessed directly, potentially leading to unexpected behavior
+
+**🔒 Security Concerns:**
+  1. The use of raw pointers can lead to buffer overflows or other security vulnerabilities
+  2. The global constant globalConstant can be modified by any part of the program, potentially leading to unexpected behavior
+
+

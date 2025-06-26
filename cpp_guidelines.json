@@ -1,0 +1,142 @@
+{
+  "title": "C++ Coding Guidelines - Custom Rules",
+  "description": "Comprehensive C++ coding standards for better code quality and maintainability",
+  
+  "naming_conventions": {
+    "class_names": {
+      "rule": "Class names must use PascalCase starting with a capital letter. Examples: MyClass, HttpRequest, DatabaseConnection",
+      "pattern": "^[A-Z][a-zA-Z0-9]*$",
+      "severity": "warning",
+      "applies_to": ["class", "struct"],
+      "examples": {
+        "good": ["MyClass", "HttpRequest", "FileReader"],
+        "bad": ["myClass", "http_request", "file_reader"]
+      }
+    },
+    "function_names": {
+      "rule": "Function names should consistently use either camelCase or snake_case throughout the project. Choose one style and stick to it.",
+      "pattern": "^([a-z][a-zA-Z0-9]*|[a-z][a-z0-9_]*)$",
+      "severity": "warning",
+      "applies_to": ["function", "method"],
+      "examples": {
+        "good": ["calculateSum", "process_data", "getValue"],
+        "bad": ["CalculateSum", "Process_Data", "get_Value"]
+      }
+    },
+    "variable_names": {
+      "rule": "Local variables should use snake_case. Member variables can use camelCase or be prefixed with m_.",
+      "pattern": "^([a-z][a-z0-9_]*|m_[a-z][a-zA-Z0-9]*)$",
+      "severity": "info",
+      "applies_to": ["variable"],
+      "examples": {
+        "good": ["user_name", "total_count", "m_dataBuffer"],
+        "bad": ["UserName", "TotalCount", "DataBuffer"]
+      }
+    },
+    "constant_names": {
+      "rule": "Constants and macros should use UPPER_SNAKE_CASE to clearly distinguish them from variables",
+      "pattern": "^[A-Z][A-Z0-9_]*$",
+      "severity": "warning",
+      "applies_to": ["constant", "macro"],
+      "examples": {
+        "good": ["MAX_SIZE", "DEFAULT_TIMEOUT", "PI_VALUE"],
+        "bad": ["maxSize", "default_timeout", "PiValue"]
+      }
+    }
+  },
+  
+  "code_structure": {
+    "line_length": {
+      "rule": "Keep lines under 120 characters for better readability on different screen sizes and code review tools",
+      "max_length": 120,
+      "severity": "info",
+      "suggestion": "Break long lines using appropriate line continuation or refactor complex expressions"
+    },
+    "include_guards": {
+      "rule": "All header files must have include guards or use #pragma once to prevent multiple inclusions",
+      "severity": "error",
+      "applies_to": ["header"],
+      "suggestion": "Add #pragma once at the top of header files or use traditional include guards"
+    },
+    "function_length": {
+      "rule": "Functions should not exceed 50 lines to maintain readability and testability",
+      "max_lines": 50,
+      "severity": "warning",
+      "suggestion": "Consider breaking large functions into smaller, more focused functions"
+    }
+  },
+  
+  "best_practices": {
+    "memory_management": {
+      "rule": "Prefer smart pointers (unique_ptr, shared_ptr) over raw pointers for automatic memory management and exception safety",
+      "keywords": ["new", "delete", "malloc", "free"],
+      "severity": "info",
+      "suggestion": "Use std::unique_ptr, std::shared_ptr, or RAII patterns instead of manual memory management",
+      "explanation": "Smart pointers automatically handle memory cleanup and provide better exception safety"
+    },
+    "null_pointer_checks": {
+      "rule": "Always validate pointers before dereferencing to prevent crashes and undefined behavior",
+      "pattern": "\\*\\s*[a-zA-Z_][a-zA-Z0-9_]*(?!\\s*==\\s*nullptr|!=\\s*nullptr)",
+      "severity": "warning",
+      "suggestion": "Add null checks: if (ptr != nullptr) before dereferencing"
+    },
+    "const_correctness": {
+      "rule": "Use const keyword wherever possible to prevent unintended modifications and improve code safety",
+      "severity": "info",
+      "suggestion": "Mark parameters, return values, and member functions as const when they don't modify state"
+    },
+    "namespace_usage": {
+      "rule": "Avoid 'using namespace std' in header files as it pollutes the global namespace for all includers",
+      "pattern": "using\\s+namespace\\s+std\\s*;",
+      "severity": "warning",
+      "applies_to": ["header"],
+      "suggestion": "Use specific std:: prefixes or place using declarations in implementation files (.cpp) only"
+    },
+    "error_handling": {
+      "rule": "Use exceptions or error codes consistently for error handling rather than ignoring potential failures",
+      "severity": "info",
+      "suggestion": "Consider using try-catch blocks or checking return values from functions that can fail"
+    }
+  },
+  
+  "formatting": {
+    "braces_style": {
+      "rule": "Use consistent brace placement throughout the project (either Allman or K&R style)",
+      "severity": "info",
+      "styles": {
+        "allman": "Opening brace on new line",
+        "kr": "Opening brace on same line"
+      }
+    },
+    "indentation": {
+      "rule": "Use consistent indentation with either 2 or 4 spaces (no tabs) to ensure consistent display across editors",
+      "severity": "info",
+      "preference": "4 spaces",
+      "suggestion": "Configure your editor to show whitespace and use space-only indentation"
+    },
+    "trailing_whitespace": {
+      "rule": "Remove trailing whitespace from all lines to keep the codebase clean",
+      "pattern": "\\s+$",
+      "severity": "info",
+      "suggestion": "Configure your editor to automatically trim trailing whitespace on save"
+    },
+    "empty_lines": {
+      "rule": "Use empty lines to separate logical blocks of code for better readability",
+      "severity": "info",
+      "suggestion": "Add empty line between functions, classes, and logical code sections"
+    }
+  },
+  
+  "documentation": {
+    "function_comments": {
+      "rule": "Document public functions with clear descriptions of parameters, return values, and behavior",
+      "severity": "info",
+      "suggestion": "Use Doxygen-style comments for public APIs: /** @brief Description @param name Description @return Description */"
+    },
+    "class_comments": {
+      "rule": "Document classes with their purpose, usage examples, and any important constraints",
+      "severity": "info",
+      "applies_to": ["class", "struct"]
+    }
+  }
+} 

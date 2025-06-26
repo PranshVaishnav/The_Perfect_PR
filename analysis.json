@@ -1,0 +1,79 @@
+{
+  "guidelines_analysis": {
+    "summary": {
+      "total_violations": 7,
+      "errors": 0,
+      "warnings": 5,
+      "info": 2
+    },
+    "violations": [
+      {
+        "rule_name": "class_naming",
+        "description": "Class names should use PascalCase (e.g., MyClass, UrlTable)",
+        "file_path": "sample_code.cpp",
+        "line_number": 7,
+        "line_content": "int BadVariableName;  // Should be snake_case or camelCase",
+        "severity": "warning",
+        "suggestion": "Class name 'myClass' should use PascalCase"
+      },
+      {
+        "rule_name": "function_naming",
+        "description": "Function names should use PascalCase (e.g., MyExcitingFunction, AddTableEntry)",
+        "file_path": "sample_code.cpp",
+        "line_number": 15,
+        "line_content": "void Another_Function_With_Very_Long_Name_That_Exceeds_One_Hundred_And_Twenty_Characters_Which_Is_Too_Long() {",
+        "severity": "warning",
+        "suggestion": "Function name 'Another_Function_With_Very_Long_Name_That_Exceeds_One_Hundred_And_Twenty_Characters_Which_Is_Too_Long' should use PascalCase"
+      },
+      {
+        "rule_name": "function_naming",
+        "description": "Function names should use PascalCase (e.g., MyExcitingFunction, AddTableEntry)",
+        "file_path": "sample_code.cpp",
+        "line_number": 26,
+        "line_content": "void global_function() {   // OK - snake_case",
+        "severity": "warning",
+        "suggestion": "Function name 'global_function' should use PascalCase"
+      },
+      {
+        "rule_name": "member_variable_naming",
+        "description": "Class member variables should be prefixed with 'm_' and use camelCase (e.g., m_tableName, m_someVar)",
+        "file_path": "sample_code.cpp",
+        "line_number": 6,
+        "line_content": "int SomeVariable;    // OK",
+        "severity": "warning",
+        "suggestion": "Member variable 'SomeVariable' should be prefixed with 'm_'"
+      },
+      {
+        "rule_name": "member_variable_naming",
+        "description": "Class member variables should be prefixed with 'm_' and use camelCase (e.g., m_tableName, m_someVar)",
+        "file_path": "sample_code.cpp",
+        "line_number": 7,
+        "line_content": "int BadVariableName;  // Should be snake_case or camelCase",
+        "severity": "warning",
+        "suggestion": "Member variable 'BadVariableName' should be prefixed with 'm_'"
+      },
+      {
+        "rule_name": "smart_pointers",
+        "description": "Prefer smart pointers over raw pointers (std::shared_ptr, std::unique_ptr, std::weak_ptr)",
+        "file_path": "sample_code.cpp",
+        "line_number": 10,
+        "line_content": "int* m_ptr = new int(42);  // Raw pointer usage",
+        "severity": "info",
+        "suggestion": "Consider using std::unique_ptr, std::shared_ptr, or RAII patterns"
+      },
+      {
+        "rule_name": "smart_pointers",
+        "description": "Prefer smart pointers over raw pointers (std::shared_ptr, std::unique_ptr, std::weak_ptr)",
+        "file_path": "sample_code.cpp",
+        "line_number": 12,
+        "line_content": "delete m_ptr;              // Raw memory management",
+        "severity": "info",
+        "suggestion": "Consider using std::unique_ptr, std::shared_ptr, or RAII patterns"
+      }
+    ]
+  },
+  "ai_analysis": {
+    "enabled": false,
+    "analyses": []
+  }
+}
